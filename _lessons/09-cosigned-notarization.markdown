@@ -36,7 +36,7 @@ A notarization is considered to be valid depending on how we agree to read the r
 
 3\. Go to ``Create Multisig Account`` tab. Create a multisig account:
 
-We are using a new type of transaction called [aggregate transaction](https://nemtech.github.io/concepts/aggregate-transaction.html) to send multisig transactions. You can check the [implementation here](#).
+We are using a new type of transaction called [aggregate transaction](https://nemtech.github.io/concepts/aggregate-transaction.html) to send multisig transactions. You can check the [implementation here](https://github.com/nemtech/nem2-workshop-document-notarization/blob/v0.1.0/project/src/app/components/createCosignedNotarization/createCosignedNotarization.component.ts#L48).
 
 - **Multisig private key**: notarization private key (deterministic).
 - **Cosignatories to add**: Alice and Bob's private key.
