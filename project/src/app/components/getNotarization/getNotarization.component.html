@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-12">
+      <h1>Get notarizations</h1>
+    </div>
+  </div>
+
+<div class="row">
+    <div class="col-md-6 gap-xs">
+        <h2>By transaction hash</h2>
+
+        <form [formGroup]="getTransactionForm" (ngSubmit)="getTransaction(getTransactionForm.value)">
+            
+            <div class="form-group">
+                    <label for="hash">Notarization hash</label>
+                    <input  id="hash" class="form-control" type="text" formControlName="hash" [ngClass]="(!getTransactionForm.controls.hash.valid && getTransactionForm.controls.hash.dirty) ? 'is-invalid' : ''">
+                   
+                    <div class="invalid-feedback" *ngIf="!getTransactionForm.controls.hash.valid && getTransactionForm.controls.hash.dirty">Enter a transaction hash.</div>
+
+            </div>
+            <button class="btn btn-primary" type="submit" [disabled]="!getTransactionForm.valid">Get notarization</button>
+        </form>
+        <div class=" gap-xs">
+            <div *ngIf="getTransactionForm.errors && getTransactionForm.errors.noTransactions">No transactions.</div>
+            <div *ngIf="transaction">{{transaction | formatTransaction}}</div> 
+        </div>
+    </div>
+
+    <div class="col-md-6 gap-xs">
+        <h2>From an account (latest transactions)</h2>
+
+        <form [formGroup]="getAccountForm" (ngSubmit)="getAccountTransactions(getAccountForm.value)">
+            
+            <div class="form-group">
+                    <label for="publicKey">Public Key</label>
+                    <input  id="publicKey" class="form-control" type="text" formControlName="publicKey" [ngClass]="(!getAccountForm.controls.publicKey.valid && getAccountForm.controls.publicKey.dirty) ? 'is-invalid' : ''">
+                    <div class="invalid-feedback" *ngIf="!getAccountForm.controls.publicKey.valid && getAccountForm.controls.publicKey.dirty">Enter a valid public key.</div>
+
+            </div>
+            <button class="btn btn-primary" type="submit" [disabled]="!getAccountForm.valid">Get 10 latest transactions</button>
+        </form>
+        <div class="gap-xs">
+            <div *ngIf="getAccountForm.errors && getAccountForm.errors.noTransactions">No transactions.</div>
+            <ol *ngIf="accountTransactions">
+                <li *ngFor="let tx of accountTransactions;">{{tx | formatTransaction}}</li>
+            </ol>
+    </div>
+
+    </div>
+</div>

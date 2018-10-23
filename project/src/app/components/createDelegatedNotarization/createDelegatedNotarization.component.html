@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>Create delgated notarization</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 gap-xs">
+    <h2>1. Sign the file with account A</h2>
+
+    <form [formGroup]="messageForm" (ngSubmit)="signMessage(messageForm.value, file)">
+      <div id="dnd" class="form-group">
+        <label for="dnd">File to notarize</label>
+        <div
+          ngfDrop
+          multiple         = "1"
+          [(file)]         = file
+          class            = "drop-zone">
+          Drag and drop your file
+        </div>
+        <table>
+          <tr *ngIf="file" class="file-holder">
+            <td>
+              <strong>{{ file.name }}</strong>
+            </td>
+            <td nowrap>
+              {{ file.type }}
+            </td>
+            <td nowrap>
+              <button type="button"
+                      class="btn btn-danger btn-xs"
+                      (click)="deleteFile()"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="form-group">
+        <label for="private-key-a">Signer private key</label>
+        <input  id="private-key-a" class="form-control" type="password" formControlName="privateKey" [ngClass]="(!messageForm.controls.privateKey.valid && messageForm.controls.privateKey.dirty) ? 'is-invalid' : ''">
+
+        <div class="invalid-feedback" *ngIf="!messageForm.controls.privateKey.valid && messageForm.controls.privateKey.dirty">Enter a valid private key.</div>
+
+      </div>
+      <button class="btn btn-primary" type="submit" [disabled]="!messageForm.valid || !file">Sign File</button>
+    </form>
+    <div *ngIf="notarizationForm.value.message" class="gap-xs">
+      <b>Signed File</b>: {{notarizationForm.value.message}}
+    </div>
+  </div>
+
+  <div class="col-md-6 gap-xs">
+    <h2>2. Notarize the file with account B</h2>
+
+    <form [formGroup]="notarizationForm" (ngSubmit)="notarize(notarizationForm.value)">
+
+      <div class="form-group">
+        <label for="message">Message</label>
+        <input  id="message" class="form-control" type="text" formControlName="message" [ngClass]="(!notarizationForm.controls.message.valid && notarizationForm.controls.message.dirty) ? 'is-invalid' : ''" disabled>
+        <div class="invalid-feedback" *ngIf="!notarizationForm.controls.message.valid && notarizationForm.controls.message.dirty">Message too large (max 1024 characters).</div>
+      </div>
+      <div class="form-group">
+        <label for="address">Notarization Address</label>
+        <input  id="address" class="form-control" type="text" formControlName="address" [ngClass]="(!notarizationForm.controls.address.valid && notarizationForm.controls.address.dirty) ? 'is-invalid' : ''">
+        <div class="invalid-feedback" *ngIf="!notarizationForm.controls.address.valid && notarizationForm.controls.address.dirty">Enter a valid address.</div>
+      </div>
+      <div class="form-group">
+        <label for="private-key-b">Signer private key</label>
+        <input  id="private-key-b" class="form-control" type="password" formControlName="privateKey" [ngClass]="(!notarizationForm.controls.privateKey.valid && notarizationForm.controls.privateKey.dirty) ? 'is-invalid' : ''">
+
+        <div class="invalid-feedback" *ngIf="!notarizationForm.controls.privateKey.valid && notarizationForm.controls.privateKey.dirty">Enter a valid private key.</div>
+      </div>
+      <button class="btn btn-primary" type="submit" [disabled]="!notarizationForm.valid">Notarize</button>
+    </form>
+
+    <div class="gap-xs" *ngIf="progress">
+      <p><b>Status</b>: <i class="fas fa-spinner fa-spin" *ngIf="progress.code == 'UNCONFIRMED'"></i> {{progress.message}}</p>
+      <div class="alert alert-info gap-xs" role="alert">
+        <strong>Important!</strong> Copy and store somewhere safe the transaction hash to check the notarization in the future.<br>
+      </div>
+    </div>
+
+  </div>
+
+</div>

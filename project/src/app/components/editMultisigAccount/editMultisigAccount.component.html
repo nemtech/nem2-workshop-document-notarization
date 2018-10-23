@@ -1,0 +1,87 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item"><a routerLink="/account/multisig/create" class="nav-link">Create Multisig Account</a></li>
+  <li class="nav-item"><a routerLink="/account/multisig/edit" class="nav-link active">Edit Multisig Account</a></li>
+</ul>
+
+<form [formGroup]="editMultisigForm" (ngSubmit)="editMultisigAccount(editMultisigForm.getRawValue())">
+
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Edit multisig account</h1>
+    </div>
+  </div>
+  <div class="row">
+
+    <div class="col-md-6">
+
+      <div class="form-group">
+        <label for="private-key">Signer private key</label>
+        <input  id="private-key" class="form-control" type="password" formControlName="privateKey" [ngClass]="(!editMultisigForm.controls.privateKey.valid && editMultisigForm.controls.privateKey.dirty) ? 'is-invalid' : ''">
+
+        <div class="invalid-feedback" *ngIf="!editMultisigForm.controls.privateKey.valid && editMultisigForm.controls.privateKey.dirty">Enter a valid private key.</div>
+
+      </div>
+      <div class="form-group">
+        <label for="multisig-public-key">Multisig public key</label>
+        <input  id="multisig-public-key" class="form-control" type="text" formControlName="multisigPublicKey" [ngClass]="(!editMultisigForm.controls.multisigPublicKey.valid && editMultisigForm.controls.multisigPublicKey.dirty) ? 'is-invalid' : ''">
+
+        <div class="invalid-feedback" *ngIf="!editMultisigForm.controls.multisigPublicKey.valid && editMultisigForm.controls.multisigPublicKey.dirty">Enter a valid public key.</div>
+
+      </div>
+
+
+      <div class="form-group">
+        <label for="min-approval-delta">Min Approval Delta</label>
+        <input  id="min-approval-delta" class="form-control" type="number" formControlName="minApprovalDelta" [ngClass]="(!editMultisigForm.controls.minApprovalDelta.valid && editMultisigForm.controls.minApprovalDelta.dirty) ? 'is-invalid' : ''">
+
+        <div class="invalid-feedback" *ngIf="!editMultisigForm.controls.minApprovalDelta.valid && editMultisigForm.controls.minApprovalDelta.dirty">Enter a valid minApproval delta.</div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="min-removal-delta">Min Removal Delta</label>
+        <input  id="min-removal-delta" class="form-control" type="number" formControlName="minRemovalDelta" [ngClass]="(!editMultisigForm.controls.minRemovalDelta.valid && editMultisigForm.controls.minRemovalDelta.dirty) ? 'is-invalid' : ''">
+        <div class="invalid-feedback" *ngIf="!editMultisigForm.controls.minRemovalDelta.valid && editMultisigForm.controls.minRemovalDelta.dirty">Enter a valid minRemovalDelta delta.</div>
+      </div>
+
+    </div>
+    <div class="col-md-6">
+      <div formArrayName="newCosignatories">
+        <p><b>Cosignatories to add</b></p>
+
+        <div [formGroupName]="i" *ngFor="let cosignatory of editMultisigForm.controls.newCosignatories.controls; let i = index">
+          <label>Cosignatory's Public Key</label>
+          <input  class="form-control" type="text" formControlName="publicKey">
+        </div>
+
+        <div class="btn btn-default btn-sm gap-xs" (click)="addCosignatory()">
+          Add another cosignatory
+        </div>
+
+      </div>
+
+      <div formArrayName="deletedCosignatories" class="gap-xs">
+        <p><b>Cosignatories to remove</b></p>
+
+        <div [formGroupName]="i" *ngFor="let cosignatory of editMultisigForm.controls.deletedCosignatories.controls; let i = index">
+          <label>Cosignatory's Public Key</label>
+          <input  class="form-control" type="text" formControlName="publicKey">
+        </div>
+
+        <div class="btn btn-default btn-sm gap-xs" (click)="deleteCosignatory()">
+          Add another cosignatory
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <button class="btn btn-primary" type="submit" [disabled]="!editMultisigForm.valid">Edit multisig account</button>
+      <p  class="gap-xs" *ngIf="progress">
+        <b>Status</b>: <i class="fas fa-spinner fa-spin" *ngIf="progress.code == 'UNCONFIRMED'"></i>  {{progress.message}}
+      </p>
+    </div>
+  </div>
+</form>

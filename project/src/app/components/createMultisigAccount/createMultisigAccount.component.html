@@ -1,0 +1,79 @@
+<form [formGroup]="createMultisigForm" (ngSubmit)="createMultisigAccount(createMultisigForm.getRawValue())">
+  <ul class="nav nav-tabs">
+    <li class="nav-item"><a routerLink="/account/multisig/create" class="nav-link active">Create Multisig Account</a>
+    </li>
+    <li class="nav-item"><a routerLink="/account/multisig/edit" class="nav-link">Edit Multisig Account</a></li>
+  </ul>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Create multisig account</h1>
+    </div>
+  </div>
+  <div class="row">
+
+    <div class="col-md-6">
+
+      <div class="form-group">
+        <label for="private-key">Multisig private key</label>
+        <input id="private-key" class="form-control" type="password" formControlName="privateKey"
+               [ngClass]="(!createMultisigForm.controls.privateKey.valid && createMultisigForm.controls.privateKey.dirty) ? 'is-invalid' : ''">
+
+        <div class="invalid-feedback"
+             *ngIf="!createMultisigForm.controls.privateKey.valid && createMultisigForm.controls.privateKey.dirty">Enter
+          a valid private key.
+        </div>
+
+      </div>
+      <div class="form-group">
+        <label for="min-approval">Min Approval </label>
+        <input id="min-approval" class="form-control" type="number" formControlName="minApproval"
+               [ngClass]="(!createMultisigForm.controls.minApproval.valid && createMultisigForm.controls.minApproval.dirty) ? 'is-invalid' : ''">
+
+        <div class="invalid-feedback"
+             *ngIf="!createMultisigForm.controls.minApproval.valid && createMultisigForm.controls.minApproval.dirty">
+          Enter a valid minApproval .
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="min-removal-">Min Removal </label>
+        <input id="min-removal-" class="form-control" type="number" formControlName="minRemoval"
+               [ngClass]="(!createMultisigForm.controls.minRemoval.valid && createMultisigForm.controls.minRemoval.dirty) ? 'is-invalid' : ''">
+        <div class="invalid-feedback"
+             *ngIf="!createMultisigForm.controls.minRemoval.valid && createMultisigForm.controls.minRemoval.dirty">Enter
+          a valid minRemoval .
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-6">
+      <div formArrayName="newCosignatories">
+        <b>Cosignatories to add</b>
+        <div [formGroupName]="i"
+             *ngFor="let cosignatory of createMultisigForm.controls.newCosignatories.controls; let i = index">
+          <label>Cosignatory's Public Key</label>
+          <input class="form-control" type="text" formControlName="publicKey">
+        </div>
+
+        <span class="btn btn-default btn-sm gap-xs" (click)="addCosignatory()">
+          Add another cosignatory
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <button class="btn btn-primary" type="submit" [disabled]="!createMultisigForm.valid">Create multisig account
+      </button>
+      <p class="gap-xs" *ngIf="progress">
+        <b>Status</b>: <i class="fas fa-spinner fa-spin" *ngIf="progress.code == 'UNCONFIRMED'"></i> {{progress.message}}
+      </p>
+    </div>
+  </div>
+</form>
+
+
+

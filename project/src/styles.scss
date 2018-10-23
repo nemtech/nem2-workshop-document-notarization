@@ -1,0 +1,43 @@
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+html{
+  overflow-x: hidden;
+  max-width: 100%;
+  word-break: break-word;
+}
+
+.container{
+  margin-bottom: 20px;
+}
+.gap{
+  margin-top: 40px;
+}
+
+.gap-xs{
+  margin-top: 20px;
+}
+
+tbody{
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  font-size: 14px;
+}
+
+.btn-danger{
+  font-size: 10px;
+  padding: 2px;
+}
+
+.btn-default{
+  background-color: #d0d0d0;
+}
+
+.drop-zone { border: dotted 3px lightgray; padding: 10px;}
+.invalid-drag { border: dotted 3px red; }
+.valid-drag { border: dotted 3px green; }
