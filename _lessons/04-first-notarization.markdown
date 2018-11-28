@@ -86,7 +86,7 @@ $> nem2-cli profile list
 
     You could split the content into several transfer transactions, but it is preferable not to store a large amount of data in the blockchain. In the next exercise, you will see how to solve this issue.
 
-3\. Open the [Notarization dashboard]('http://localhost:4200/) in your browser. You should see the following screen:
+3\. Open the [Notarization dashboard](http://localhost:4200/) in your browser. You should see the following screen:
 
 ![screenshot-notarization-panel]({{ site.baseurl }}/assets/images/screenshot-notarization-panel.png)
 
