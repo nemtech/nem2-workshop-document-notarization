@@ -26,7 +26,9 @@ Alice decided to create an account that represents the notarized digital asset u
 ## Concerns
 
 You have sent your transaction to an account that represents the notarization. See that everybody in the network is able to send transactions to this account. 
-
+    
 How do we know who is the owner of the asset, or who is allowed to perform updates?
 
 **This logic is kept off-chain.** You could state an address in the first message. Only messages written from that account are valid. Another possibility could be that only transactions sent from the asset account are valid.
+
+    ℹ️  Future versions will add the possibility to block transactions from specified accounts. Right now the best way to achieve it is to filter the transactions off-chain.

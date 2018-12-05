@@ -4,6 +4,8 @@ title:  "Introduction"
 permalink: /lessons/introduction/
 ---
 
+<div style="text-align: center;"><iframe width="560" height="315" src="https://www.youtube.com/embed/sLwOEgJzh58" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
 The notary services in the real world, like a notary public verification, are highly useful to provide independent verification of important documents. Having a document notarized with a notary Public's seal is the same as swearing under oath in court - you're attesting that the facts contained in the document are true.
 
 ## What is traditionally needed for a document to be notarized?
