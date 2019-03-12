@@ -168,6 +168,20 @@ hr {
   }
 }
 
+.trigger {
+  position: relative;
+}
+.changeLanguage {
+  position: absolute;
+  top: 0px;
+  right: 140px;
+}
+.page-navigation {
+  font-size: 14px;
+  display: block;
+  width: auto;
+  overflow: hidden;
+}
 .page-navigation {
   font-size: 14px;
   display: block;
