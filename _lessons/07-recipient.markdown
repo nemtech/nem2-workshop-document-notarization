@@ -4,7 +4,7 @@ title:  "Choosing the transaction recipient"
 permalink: /lessons/recipient/
 ---
 
-Until now, we have used the same account that signed the transaction as the recipient. Which other accounts can we use? Let's have a look at other options:
+Until now, we have used a notarization wallet (sink account) as the recipient. Which other accounts can we use? Let's have a look at other options:
 
 ![recipient-strategy-sink]({{ site.baseurl }}/assets/images/diagram-recipient-strategy-sink.png)
 
