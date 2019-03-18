@@ -62,5 +62,5 @@ npm start
 Install **nem2-cli** using npm.
 
 {% highlight bash %}
-npm i -g nem2-cli
+npm i -g nem2-cli@0.9.7
 {% endhighlight %}
