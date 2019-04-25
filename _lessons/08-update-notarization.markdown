@@ -31,4 +31,6 @@ How do we know who is the owner of the asset, or who is allowed to perform updat
 
 **This logic is kept off-chain.** You could state an address in the first message. Only messages written from that account are valid. Another possibility could be that only transactions sent from the asset account are valid.
 
-    ℹ️When the workshop was created, the best solution was to filter the transactions off-chain. The latest version adds the possibility to [block receiving transactions from specific accounts](https://nemtech.github.io/concepts/account-filter.html).
+{% include note.html content="When the workshop was created, the best solution was to filter the transactions off-chain. The latest version adds the possibility to block receiving transactions from specific accounts." %}
+
+**Read more**: [Account filters](https://nemtech.github.io/concepts/account-filter.html)

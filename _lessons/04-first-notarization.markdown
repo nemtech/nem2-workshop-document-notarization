@@ -37,23 +37,23 @@ The transaction, if valid, will be [included in a block](https://nemtech.github.
 
 Performing actions in the blockchain have a cost. This is necessary to provide an incentive for those who validate and secure the network. The fee is paid in cat.currency, the underlying cryptocurrency of the NEM network.
 
-    ℹ️In your private network, you can send transaction without paying fees.
+{% include note.html content=" In your private network, you can send transaction without paying transaction fees." %}
 
 Instead of creating a new account, let’s use an account which already has cat.currency.
 
 1\. Open a terminal and go to the directory where you have downloaded Catapult Bootstrap Service.
-{% highlight bash %}
-
-$> cd  build/generated-addresses/
-$> cat addresses.yaml
+{% highlight console %}
+cd  build/generated-addresses/
+cat addresses.yaml
 {% endhighlight %}
 
 2\. Under the section nemesis_addresses, you will find the key pairs which contain cat.currency.
 
 3\. Load the first account as a profile in NEM2-CLI. This account identifies Alice.
 
-{% highlight bash %}
-$> nem2-cli profile create
+{% highlight console %}
+nem2-cli profile create
+
 Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): MIJIN_TEST
 Introduce NEM 2 Node URL. (Example: http://localhost:3000): http://localhost:3000
 Insert profile name (blank means default and it could overwrite the previous profile): alice
@@ -64,8 +64,9 @@ Private Key:    6D...80
 
 4\. Create a new profile for Alice's notarizations. 
 
-{% highlight bash %}
-$> nem2-cli account generate
+{% highlight console %}
+nem2-cli account generate
+
 Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): MIJIN_TEST
 Do you want to save it? [y/n]: y
 Introduce NEM 2 Node URL. (Example: http://localhost:3000): http://localhost:3000
@@ -78,13 +79,13 @@ Private Key:    41...F6
 
 5\. Fetch the account's information anytime by running:
 
-{% highlight bash %}
-$> nem2-cli profile list
+{% highlight console %}
+nem2-cli profile list
 {% endhighlight %}
 
 6\. Create a new .txt file, and write "Hello World" inside. NEM messages length is limited to ``1024`` characters.
 
-    ℹ️You could split the content into several transfer transactions, but it is preferable not to store a large amount of data in the blockchain. In the next exercise, you will see how to solve this issue.
+{% include note.html content="You could split the content into several transfer transactions, but it is preferable not to store a large amount of data in the blockchain. In the next exercise, you will see how to solve this issue." %}
 
 7\. Open the [Notarization dashboard](http://localhost:4200/) in your browser. You should see the following screen:
 

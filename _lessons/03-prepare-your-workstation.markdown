@@ -16,7 +16,7 @@ You are going to **run a private chain locally** for learning purposes using [Ca
 
 1\. Make sure you have [docker](https://docs.docker.com/install/) and [docker compose](https://docs.docker.com/compose/install/) installed before running the following commands:
 
-{% highlight bash %}
+{% highlight console %}
 git clone https://github.com/tech-bureau/catapult-service-bootstrap.git --branch v0.3.0
 cd catapult-service-bootstrap
 docker-compose up
@@ -24,7 +24,7 @@ docker-compose up
 
 2\. After the image has been downloaded and the service is running, check if you can get the first block information:
 
-{% highlight bash %}
+{% highlight console %}
 curl localhost:3000/block/1
 {% endhighlight %}
 
@@ -33,7 +33,7 @@ This workshop is project based. You are going to add some new features to an exi
 
 1\. Download the workshop repository.
 
-{% highlight bash %}
+{% highlight console %}
 git clone https://github.com/nemtech/nem2-workshop-document-notarization.git
 {% endhighlight %}
 
@@ -43,13 +43,13 @@ During this workshop, we are going to use the **Typescript SDK**.
 
 2\. Install **typescript** globally. 
 
-{% highlight bash %}
+{% highlight console %}
 npm install -g typescript
 {% endhighlight %}
 
 3\. Run the ``project``.
 
-{% highlight bash %}
+{% highlight console %}
 cd project
 npm install
 npm start
@@ -61,6 +61,6 @@ npm start
 
 Install **nem2-cli** using npm.
 
-{% highlight bash %}
+{% highlight console %}
 npm i -g nem2-cli@0.11.1
 {% endhighlight %}

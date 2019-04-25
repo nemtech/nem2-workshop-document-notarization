@@ -58,7 +58,7 @@ Click ``Notarize`` and wait until you get the message **"Notarization pending to
   
 5\. Bob has to cosign the transaction as well, as we had set ``minApproval`` to 2.
 
-{% highlight bash %}
+{% highlight console %}
 nem2-cli transaction cosign --profile bob --hash A855F0C49B78100AFB733DF53FD6758615132E7DBBF74C7B856E4CBACF0946E6
 {% endhighlight %}
 

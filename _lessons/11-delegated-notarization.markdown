@@ -18,8 +18,9 @@ He can prove he had access to the content of the file by signing the content wit
 
 1\. Create a new account to identify the notarization company.
 
-{% highlight bash %}
-$> nem2-cli account generate
+{% highlight console %}
+nem2-cli account generate
+
 Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): MIJIN_TEST
 Do you want to save it? [y/n]: y
 Introduce NEM 2 Node URL. (Example: http://localhost:3000): http://localhost:3000

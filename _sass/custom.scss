@@ -5,13 +5,18 @@ body {
 }
 
 * {
-  font-family: "Source Sans Pro", Calibri, Candara, Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
   line-height: 1.1;
   color: inherit;
+}
+
+p {
+  font-weight: 400;
+  font-size: 16px;
 }
 
 a {
@@ -79,16 +84,48 @@ hr {
   border: none;
 }
 
+.alert {
+  background: #f7f5fa;
+  border-color: #f7f5fa;
+  color: #555;
+  border-radius: 4px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 7px;
+
+  p{
+    line-height: 1.5;
+  }
+}
+
+figure.highlight pre{
+  border-radius: 4px;
+  border: 0;
+
+  .language-console .go{
+    color: #fff;
+  }
+}
+
+figure.highlight pre, figure.highlight code {
+  background-color: #272822;
+  color: #fff;
+}
+
+code.highlighter-rouge {
+  color: #c7254e;
+  background-color: #f9f2f4;
+}
+
 /* Header */
 .site-header {
-
   background-color: white;
   border: 0;
   border-radius: 0;
   margin-bottom: 0;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   min-height: auto;
 
   .site-title {
@@ -103,7 +140,8 @@ hr {
     }
   }
   .site-nav {
-    padding: 15px;
+    margin-top: 14.5px;
+    margin-bottom: 14.5px;
     a {
       text-decoration: none;
       color: #333;
@@ -195,10 +233,6 @@ hr {
   display: block;
 }
 
-.lesson li, .home li{
-  font-weight: 200;
-}
-
 /* Footer */
 .site-footer {
   padding: 15px 0px;
@@ -220,3 +254,4 @@ hr {
   }
 }
 
+@import url(../assets/monokai.css);

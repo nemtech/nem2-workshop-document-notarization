@@ -12,7 +12,7 @@ Now, Alice wants to notarize a **confidential document**. That means she wants t
 
 A **hash function** is used to map data of arbitrary size to data of a fixed size. This function only works one way, meaning no one will be able to recover the original content. For example, applying the sha256 hashing algorithm to any file will transform it to a 256-bit-length string.
 
-    ℹ️ It is not possible to recover the original content. But, simple words and short sentences always generate the same 256-bit hash.
+    It is not possible to recover the original content. But, simple words and short sentences always generate the same 256-bit hash.
 
 ![confidential-notarization]({{ site.baseurl }}/assets/images/diagram-confidential-notarization.png)
 

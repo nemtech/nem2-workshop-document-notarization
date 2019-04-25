@@ -32,7 +32,10 @@ Until now, we have used a notarization wallet (sink account) as the recipient. W
 
 The account's private key could be generated in a deterministic way. A private key is a 256-bit integer, which can be generated hashing the file properties and signing it your account.
 
-    ℹ️We are using the [apostille-library](https://github.com/nemtech/NIP/blob/master/NIPs/nip-0004.md#specification) to generate a deterministic private key. If the account is not used to send transactions, opt to create a deterministic public key instead. This account won't be able to announce transactions.
+{% include note.html content="We are using the apostille library to generate a deterministic private key. If the account is not used to send transactions, create a deterministic public key instead. This account won't be able to announce transactions." %}
+
+
+**Read more:** [Apostille Specification](https://github.com/nemtech/NIP/blob/master/NIPs/nip-0004.md#specification) 
 
 ## Instructions
 

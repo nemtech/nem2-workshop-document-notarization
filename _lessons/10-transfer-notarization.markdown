@@ -18,8 +18,9 @@ From that moment, Bob will be the only person allowed to transfer transactions f
 
 1\. Open ``Create multisig`` tab and click ``Edit multisig``. 
 
-{% highlight bash %}
-$> nem2-cli account generate
+{% highlight console %}
+nem2-cli account generate
+
 Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): MIJIN_TEST
 Do you want to save it? [y/n]: y
 Introduce NEM 2 Node URL. (Example: http://localhost:3000): http://localhost:3000
