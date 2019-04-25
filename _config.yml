@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Notarization of documents on NEM blockchain
-email: david@nemeurope.eu
+email: david@nem.foundation
 description: >- # this means to ignore newlines until "baseurl:"
   Learn common strategies to notarize documents on NEM blockchain.
 baseurl: "/nem2-workshop-document-notarization" # the subpath of your site, e.g. /blog

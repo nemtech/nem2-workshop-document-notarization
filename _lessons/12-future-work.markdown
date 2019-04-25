@@ -10,6 +10,4 @@ If you want to learn how to combine other NEM built-in features, [visit the NEM 
 
 ## Apostille library
 
-Some basic functions implemented in this workshop could be reused for other notarization projects.
-
-If you are willing to code some notarization system,  review the [Apostille library](https://apostille.io). The library enables transferable, updatable, and conjointly owned notarizations on NEM, agreeing in a common way to read the blockchain. 
+If you are willing to code some notarization system, review the [Apostille library](https://apostille.io). The library enables transferable, updatable, and conjointly owned notarizations on NEM, agreeing in a common way to read the blockchain. 

@@ -27,7 +27,7 @@ export class CreateDeterministicAccountComponent implements OnInit {
 
   createDeterministicAccount(form, file){
     const account = Account.createFromPrivateKey(form.privateKey, NetworkType.MIJIN_TEST);
-    this.deterministicAccount = Apostille.init(file.name, account);
+    this.deterministicAccount = Apostille.initFromSeed(file.name, account);
   }
 
   deleteFile(){

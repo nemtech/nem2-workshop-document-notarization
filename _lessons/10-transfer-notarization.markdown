@@ -14,7 +14,7 @@ From that moment, Bob will be the only person allowed to transfer transactions f
 
 ![diagram-transfer]({{ site.baseurl }}/assets/images/diagram-transfer.png)
 
-## Solution
+## Instructions
 
 1\. Open ``Create multisig`` tab and click ``Edit multisig``. 
 

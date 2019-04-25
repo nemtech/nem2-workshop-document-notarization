@@ -26,7 +26,7 @@ Some important considerations to keep in mind:
 
 You will create a **2-of-2 multisig account** that represents the digital asset, with cosignatories Alice an Bob.
 
-## Solution
+## Instructions
 
 A notarization is considered to be valid depending on how we agree to read the records. In this case, we will consider that only messages sent from the same notarization account are valid.
  

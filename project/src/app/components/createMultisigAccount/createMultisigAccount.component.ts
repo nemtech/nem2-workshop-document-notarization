@@ -12,7 +12,7 @@ import {
   PublicAccount,
   TransactionHttp,
 } from 'nem2-sdk';
-import {isValidPublicKey} from '../../validators/nem.validator';
+import {isValidPrivateKey, isValidPublicKey} from '../../validators/nem.validator';
 import {filter} from "rxjs/operators";
 import {ConstantsService} from "../../services/constants.service";
 
@@ -33,7 +33,7 @@ export class CreateMultisigAccountComponent implements OnInit {
     this.transactionHttp = new TransactionHttp(ConstantsService.nodeURL);
 
     this.createMultisigForm = this.formBuilder.group({
-      'privateKey': ['', Validators.required],
+      'privateKey': ['', isValidPrivateKey],
       'newCosignatories': formBuilder.array([this.createPublicKeyInput()]),
       'minApproval': [0, Validators.required],
       'minRemoval': [0, Validators.required]
@@ -42,7 +42,7 @@ export class CreateMultisigAccountComponent implements OnInit {
   }
 
 
-createPublicKeyInput() : FormGroup {
+  createPublicKeyInput() : FormGroup {
     return this.formBuilder.group({
       publicKey : ['', isValidPublicKey]
     });
@@ -104,8 +104,8 @@ createPublicKeyInput() : FormGroup {
     this.transactionHttp
       .announce(signedTransaction)
       .subscribe( ignored =>
-        this.progress = {'message': 'Transaction unconfirmed', 'code':'UNCONFIRMED'},
-          err=>this.progress = {'message':err, 'code':'ERROR'});
+          this.progress = {'message': 'Transaction unconfirmed', 'code':'UNCONFIRMED'},
+        err=>this.progress = {'message':err, 'code':'ERROR'});
   }
 
   ngOnInit(){}

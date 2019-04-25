@@ -30,17 +30,13 @@ Until now, we have used a notarization wallet (sink account) as the recipient. W
 **Cons**:
 * Anyone can send transactions to this account. The validity of the transactions should be defined when reading the blockchain records.
 
-The account's private key could be generated in a deterministic way. A private key is a 256-bit integer, which can be generated based on the file properties.
+The account's private key could be generated in a deterministic way. A private key is a 256-bit integer, which can be generated hashing the file properties and signing it your account.
 
-    ℹ️ If the account is not used to send transactions, opt to create a deterministic public key instead. This account won't be able to announce transactions.
+    ℹ️We are using the [apostille-library](https://github.com/nemtech/NIP/blob/master/NIPs/nip-0004.md#specification) to generate a deterministic private key. If the account is not used to send transactions, opt to create a deterministic public key instead. This account won't be able to announce transactions.
 
-For example, **asset_private_key = account.sign(sha256(file_name))**
+## Instructions
 
-## Solution
-
-1\. Open ``Create deterministic account`` tab, drag and drop the file and write Alice's private key. After clicking create, the private key will be created by applying sha256 to the name of the file, and then signing it with Alice's account.
-
-For example: ``asset_private_key = account.sign(sha256(file_name))``
+1\. Open ``Create deterministic account`` tab, drag and drop the file, and type Alice's private key. After clicking create, the private key will be created by applying sha256 to the name of the file, and then signing it with Alice's account.
 
 ![screenshot-create-deterministic-account]({{ site.baseurl }}/assets/images/screenshot-deterministic-account.png)
 

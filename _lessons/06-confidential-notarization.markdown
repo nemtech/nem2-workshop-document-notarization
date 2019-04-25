@@ -18,7 +18,7 @@ A **hash function** is used to map data of arbitrary size to data of a fixed siz
 
 In this exercise, you are going to apply a hash function to the content of the file. Then, we will send a transaction with the fixed length hash. This enables the possibility to timestamp large files using one single transaction.
 
-## Solution
+## Instructions
 
 1\. Open `project/src/app/components/createNotarization.component.ts`, and edit ``onFileChange()`` function. This function is called after dragging the file into the notarization panel. Apply the hash function to the content of the file using SHA256 algorithm.
 
