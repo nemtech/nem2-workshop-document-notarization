@@ -37,6 +37,7 @@ export class EditMultisigAccountComponent implements OnInit {
 
     this.listener = new Listener(ConstantsService.listenerURL, WebSocket);
     this.transactionHttp = new TransactionHttp(ConstantsService.nodeURL);
+    this.namespaceHttp = new NamespaceHttp(ConstantsService.nodeURL);
 
     this.editMultisigForm = this.formBuilder.group({
       'privateKey': ['', isValidPrivateKey],

@@ -14,7 +14,6 @@ Alice decided to create an account that represents the notarized digital asset u
 
 1\. Edit the txt file you are notarizing, changing the text to "Lorem Ipsum".
 
-
 2\. Open the Notarization dashboard in your browser and notarize the edited file. Use as the address to send the notarization the account created in the previous module. Then, sign the notarization with Alice's private key.
 
 ![screenshot-update-notarization]({{ site.baseurl }}/assets/images/screenshot-update-notarization.png)

@@ -12,7 +12,7 @@ Now, Alice wants to notarize a **confidential document**. That means she wants t
 
 A **hash function** is used to map data of arbitrary size to data of a fixed size. This function only works one way, meaning no one will be able to recover the original content. For example, applying the sha256 hashing algorithm to any file will transform it to a 256-bit-length string.
 
-    It is not possible to recover the original content. But, simple words and short sentences always generate the same 256-bit hash.
+{% include note.html content="It is not possible to recover the original content. But, simple words and short sentences always generate the same 256-bit hash." %}
 
 ![confidential-notarization]({{ site.baseurl }}/assets/images/diagram-confidential-notarization.png)
 
@@ -23,13 +23,13 @@ In this exercise, you are going to apply a hash function to the content of the f
 1\. Open `project/src/app/components/createNotarization.component.ts`, and edit ``onFileChange()`` function. This function is called after dragging the file into the notarization panel. Apply the hash function to the content of the file using SHA256 algorithm.
 
 {% highlight typescript %}
-  onFileChange(){
+  onFileChange() {
     this.notarizationService
       .readFile(this.file)
       .subscribe( message =>{
         this.notarizationForm.patchValue({'message': crypto.SHA256(message).toString(crypto.enc.Hex) });
         this.notarizationForm.get('message')!.markAsDirty();
-      })
+      });
   }
 {% endhighlight %}
 

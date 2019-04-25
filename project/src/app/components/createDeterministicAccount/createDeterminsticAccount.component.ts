@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Account, Listener, NetworkType} from 'nem2-sdk';
+import {Account, NetworkType} from 'nem2-sdk';
 import {isValidPrivateKey} from '../..//validators/nem.validator';
 import {NotarizationService} from './../../services/notarization.service';
-import * as crypto from "crypto-js";
 import {Apostille} from "apostille-library";
 
 @Component({
@@ -16,7 +15,7 @@ export class CreateDeterministicAccountComponent implements OnInit {
   progress : string;
   file: File;
   notarizationService: NotarizationService;
-  deterministicAccount: Apostille;
+  deterministicAccount: Account;
 
   constructor(private formBuilder: FormBuilder) {
     this.notarizationService = new NotarizationService();
@@ -27,7 +26,7 @@ export class CreateDeterministicAccountComponent implements OnInit {
 
   createDeterministicAccount(form, file){
     const account = Account.createFromPrivateKey(form.privateKey, NetworkType.MIJIN_TEST);
-    this.deterministicAccount = Apostille.initFromSeed(file.name, account);
+    this.deterministicAccount = Apostille.initFromSeed(file.name, account).HDAccount;
   }
 
   deleteFile(){
