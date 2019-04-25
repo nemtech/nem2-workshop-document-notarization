@@ -7,15 +7,17 @@ import {
   Listener,
   LockFundsTransaction,
   ModifyMultisigAccountTransaction,
+  Mosaic,
   MultisigCosignatoryModification,
   MultisigCosignatoryModificationType,
+  NamespaceHttp,
+  NetworkCurrencyMosaic,
   NetworkType,
   PublicAccount,
   TransactionHttp,
   UInt64,
-  XEM
 } from 'nem2-sdk';
-import {isValidPublicKey} from '../../validators/nem.validator';
+import {isValidPrivateKey, isValidPublicKey} from '../../validators/nem.validator';
 import {filter, mergeMap} from "rxjs/operators";
 import {ConstantsService} from "../../services/constants.service";
 
@@ -27,6 +29,7 @@ export class EditMultisigAccountComponent implements OnInit {
 
   editMultisigForm : FormGroup;
   transactionHttp: TransactionHttp;
+  namespaceHttp: NamespaceHttp;
   listener : Listener;
   progress : Object;
 
@@ -34,10 +37,11 @@ export class EditMultisigAccountComponent implements OnInit {
 
     this.listener = new Listener(ConstantsService.listenerURL, WebSocket);
     this.transactionHttp = new TransactionHttp(ConstantsService.nodeURL);
+    this.namespaceHttp = new NamespaceHttp(ConstantsService.nodeURL);
 
     this.editMultisigForm = this.formBuilder.group({
-      'privateKey': ['', Validators.required],
-      'multisigPublicKey': ['', Validators.required],
+      'privateKey': ['', isValidPrivateKey],
+      'multisigPublicKey': ['', isValidPublicKey],
       'newCosignatories':
         formBuilder.array([]),
       'deletedCosignatories': formBuilder.array([]),
@@ -47,13 +51,11 @@ export class EditMultisigAccountComponent implements OnInit {
 
   }
 
-
   createPublicKeyInput() : FormGroup {
     return this.formBuilder.group({
       publicKey : ['', isValidPublicKey]
     });
   }
-
 
   addCosignatory() {
     const cosignatories = this.editMultisigForm.get('newCosignatories') as FormArray;
@@ -65,7 +67,7 @@ export class EditMultisigAccountComponent implements OnInit {
     cosignatories.controls.push(this.createPublicKeyInput());
   }
 
-  editMultisigAccount(form){
+  async editMultisigAccount(form){
     const account = Account.createFromPrivateKey(form.privateKey, NetworkType.MIJIN_TEST);
     const multisigPublicAccount = PublicAccount.createFromPublicKey(form.multisigPublicKey, NetworkType.MIJIN_TEST);
 
@@ -95,9 +97,10 @@ export class EditMultisigAccountComponent implements OnInit {
 
     const signedTransaction = account.sign(aggregateTransaction);
 
+    const mosaicId = await this.namespaceHttp.getLinkedMosaicId(NetworkCurrencyMosaic.NAMESPACE_ID).toPromise();
     const lockFundsTransaction = LockFundsTransaction.create(
       Deadline.create(),
-      XEM.createRelative(10),
+      new Mosaic(mosaicId, UInt64.fromUint(10000000)),
       UInt64.fromUint(480),
       signedTransaction,
       NetworkType.MIJIN_TEST);

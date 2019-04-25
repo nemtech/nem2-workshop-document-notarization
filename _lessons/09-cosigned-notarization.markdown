@@ -26,7 +26,7 @@ Some important considerations to keep in mind:
 
 You will create a **2-of-2 multisig account** that represents the digital asset, with cosignatories Alice an Bob.
 
-## Solution
+## Instructions
 
 A notarization is considered to be valid depending on how we agree to read the records. In this case, we will consider that only messages sent from the same notarization account are valid.
  
@@ -34,9 +34,11 @@ A notarization is considered to be valid depending on how we agree to read the r
 
 2\. Create an account for Bob.
 
-3\. Go to ``Create Multisig Account`` tab. Create a multisig account:
+{% highlight console %}
+nem2-cli account generate --save
+{% endhighlight %}
 
-We are using a new type of transaction called [aggregate transaction](https://nemtech.github.io/concepts/aggregate-transaction.html) to send multisig transactions. You can check the [implementation here](https://github.com/nemtech/nem2-workshop-document-notarization/blob/v0.1.0/project/src/app/components/createCosignedNotarization/createCosignedNotarization.component.ts#L48).
+3\. Go to ``Create Multisig Account`` tab. Create a multisig account:
 
 - **Multisig private key**: notarization private key (deterministic).
 - **Cosignatories to add**: Alice and Bob's private key.
@@ -53,12 +55,15 @@ Wait until the transaction gets confirmed.
 - **Multisig public key**: notarization public key (deterministic).
 - **Signer private key**: Alice's private key.
 
+{% include note.html content="The application uses a new type of transaction to send multisig transactions." %}
+
+**Read more:** [Aggregate transaction](https://nemtech.github.io/concepts/aggregate-transaction.html)
+
 Click ``Notarize`` and wait until you get the message **"Notarization pending to be cosigned with hash A8...E6"**.
 
-  
 5\. Bob has to cosign the transaction as well, as we had set ``minApproval`` to 2.
 
-{% highlight bash %}
+{% highlight console %}
 nem2-cli transaction cosign --profile bob --hash A855F0C49B78100AFB733DF53FD6758615132E7DBBF74C7B856E4CBACF0946E6
 {% endhighlight %}
 

@@ -17,10 +17,15 @@
  */
 
 import {
+  Address,
+  AddressAliasTransaction,
   AggregateTransaction,
+  AliasActionType,
   LockFundsTransaction,
   ModifyMultisigAccountTransaction,
+  MosaicAliasTransaction,
   MosaicDefinitionTransaction,
+  MosaicId,
   MosaicSupplyChangeTransaction,
   MosaicSupplyType,
   MultisigCosignatoryModificationType,
@@ -29,8 +34,7 @@ import {
   SecretLockTransaction,
   SecretProofTransaction,
   Transaction,
-  TransferTransaction,
-  UInt64
+  TransferTransaction
 } from 'nem2-sdk';
 import {Injectable} from "@angular/core";
 
@@ -46,16 +50,25 @@ export class TransactionService {
   public formatTransactionToFilter(transaction: Transaction): string {
     let transactionFormatted = '';
     if (transaction instanceof TransferTransaction) {
-      transactionFormatted += 'TransferTransaction: Recipient:' + transaction.recipient.pretty();
+      transactionFormatted += 'TransferTransaction: Recipient:';
+      if (transaction.recipient instanceof Address) {
+        transactionFormatted += transaction.recipient.pretty();
+      } else {
+        transactionFormatted += transaction.recipient.toHex();
+      }
       transactionFormatted += transaction.message.payload.length > 0 ? ' Message:\"' + transaction.message.payload + '\"' : '';
       if (transaction.mosaics.length > 0) {
         transactionFormatted += ' Mosaics: ';
         transaction.mosaics.map((mosaic) => {
-          transactionFormatted += mosaic.id.toHex() + ':' + mosaic.amount.compact() + ',';
+          if (mosaic.id instanceof MosaicId) {
+            transactionFormatted += 'MosaicId:';
+          } else {
+            transactionFormatted += 'NamespaceId:';
+          }
+          transactionFormatted += mosaic.id.toHex() + '::' + mosaic.amount.compact() + ',';
         });
         transactionFormatted = transactionFormatted.substr(0, transactionFormatted.length - 1);
       }
-
     } else if (transaction instanceof RegisterNamespaceTransaction) {
       transactionFormatted += 'RegisterNamespaceTransaction: NamespaceName:' + transaction.namespaceName;
 
@@ -67,13 +80,14 @@ export class TransactionService {
 
     } else if (transaction instanceof MosaicDefinitionTransaction) {
       transactionFormatted += 'MosaicDefinitionTransaction: ' +
-        'MosaicName:' + transaction.mosaicName +
-        ' Duration:' + transaction.mosaicProperties.duration.compact() +
-        ' Divisibility:' + transaction.mosaicProperties.divisibility +
+        'MosaicName:' + transaction.mosaicId.toHex();
+      if (transaction.mosaicProperties.duration){
+        transactionFormatted += ' Duration:' + transaction.mosaicProperties.duration.compact();
+      }
+      transactionFormatted += ' Divisibility:' + transaction.mosaicProperties.divisibility +
         ' SupplyMutable:' + transaction.mosaicProperties.supplyMutable +
         ' Transferable:' + transaction.mosaicProperties.transferable +
         ' LevyMutable:' + transaction.mosaicProperties.levyMutable;
-
     } else if (transaction instanceof MosaicSupplyChangeTransaction) {
       transactionFormatted += 'MosaicSupplyChangeTransaction: ' +
         'MosaicId:' + transaction.mosaicId.toHex();
@@ -129,13 +143,21 @@ export class TransactionService {
         'HashType:' + (transaction.hashType === 0 ? 'SHA3_512' : ' unknown') +
         ' Secret:' + transaction.secret +
         ' Proof:' + transaction.proof;
+    } else if (transaction instanceof MosaicAliasTransaction) {
+      transactionFormatted += 'MosaicAliasTransaction: ' +
+        'AliasAction:' + AliasActionType[transaction.actionType] +
+        ' MosaicId:' + transaction.mosaicId.toHex() +
+        ' NamespaceId:' + transaction.namespaceId.toHex();
+    } else if (transaction instanceof AddressAliasTransaction) {
+      transactionFormatted += 'AddressAliasTransaction: ' +
+        'AliasAction:' + AliasActionType[transaction.actionType] +
+        ' Address:' + transaction.address.plain() +
+        ' NamespaceId:' + transaction.namespaceId.toHex();
     }
 
     transactionFormatted += (transaction.signer ? ' Signer:' + transaction.signer.address.pretty() : '') +
       ' Deadline:' + transaction.deadline.value.toLocalDate().toString() +
-      (transaction.transactionInfo && transaction.transactionInfo.hash ? ' Hash:' + transaction.transactionInfo.hash : '') 
-      + (transaction.transactionInfo && transaction.transactionInfo.height ? ' Height:' + new UInt64([transaction.transactionInfo.height.lower, transaction.transactionInfo.height.higher]).compact() : '');
+      (transaction.transactionInfo && transaction.transactionInfo.hash ? ' Hash:' + transaction.transactionInfo.hash : '');
     return transactionFormatted;
   }
-
 }

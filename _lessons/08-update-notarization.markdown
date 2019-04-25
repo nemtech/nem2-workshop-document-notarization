@@ -8,12 +8,11 @@ permalink: /lessons/notarization-updates/
 
 ![recipient-strategy-asset]({{ site.baseurl }}/assets/images/diagram-recipient-strategy-asset.png)
 
-Alice decided to create an account that represents the notarized digital asset uniquely. You could have the track of the updates done by announcing  transactions to the same account. 
+Alice decided to create an account that represents the notarized digital asset uniquely. You could have the track of the updates done by announcing transactions to the same account. 
 
-## Solution
+## Instructions
 
 1\. Edit the txt file you are notarizing, changing the text to "Lorem Ipsum".
-
 
 2\. Open the Notarization dashboard in your browser and notarize the edited file. Use as the address to send the notarization the account created in the previous module. Then, sign the notarization with Alice's private key.
 
@@ -31,4 +30,6 @@ How do we know who is the owner of the asset, or who is allowed to perform updat
 
 **This logic is kept off-chain.** You could state an address in the first message. Only messages written from that account are valid. Another possibility could be that only transactions sent from the asset account are valid.
 
-    ℹ️  Future versions will add the possibility to block transactions from specified accounts. Right now the best way to achieve it is to filter the transactions off-chain.
+{% include note.html content="When the workshop was created, the best solution was to filter the transactions off-chain. The latest version adds the possibility to block receiving transactions from specific accounts." %}
+
+**Read more**: [Account filters](https://nemtech.github.io/concepts/account-filter.html)

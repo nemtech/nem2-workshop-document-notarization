@@ -6,7 +6,7 @@ permalink: /lessons/delegated-notarization/
 
 # Background
 
-Public networks require a fee to announce transactions. Bob wants to notarize a digital document, but he doesn't own XEM or has enough knowledge about blockchain technology. He opts to delegate the complicated part to a specialized notarization service.
+Public networks require a fee to announce transactions. Bob wants to notarize a digital document, but he doesn't own cat.currency or has enough knowledge about blockchain technology. He opts to delegate the complicated part to a specialized notarization service.
 
 Bob will sign the content of the file using his account. After sending the hash of the file to the specialized company, they will announce the transfer transaction to the blockchain for him.
 
@@ -14,12 +14,13 @@ He can prove he had access to the content of the file by signing the content wit
 
 ![delegated-notarization]({{ site.baseurl }}/assets/images/diagram-delegated-notarization.png)
 
-## Solution
+## Instructions
 
 1\. Create a new account to identify the notarization company.
 
-{% highlight bash %}
-$> nem2-cli account generate
+{% highlight console %}
+nem2-cli account generate
+
 Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): MIJIN_TEST
 Do you want to save it? [y/n]: y
 Introduce NEM 2 Node URL. (Example: http://localhost:3000): http://localhost:3000

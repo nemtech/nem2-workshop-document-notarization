@@ -5,8 +5,10 @@
 layout: home
 ---
 
+<!--
 * [English](https://nemtech.github.io/nem2-workshop-document-notarization/)
-* [中文](https://nemtechchina.github.io/nem2-workshop-document-notarization/)
+* [中文](https://nemtechchina.github.io/nem2-workshop-document-notarization/) 
+-->
 
 In this workshop you are going to learn how to prove documents existed prior to certain point in time. This document could be any digital file you can imagine in which you have an interest to notarize 
 — for example a meaningful contract, a movie script or a patent.
@@ -30,7 +32,7 @@ Before starting the workshop, install the following packages:
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 * [Docker](https://docs.docker.com/install/)
 * [Docker Compose](https://docs.docker.com/compose/install/)
-* [Node](https://nodejs.org/en/download/) >= 8.9.X.
+* [Node](https://nodejs.org/en/download/) = 10.15.3 LTS
 
 ## Labs
 

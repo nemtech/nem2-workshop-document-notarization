@@ -49,7 +49,7 @@
       <div formArrayName="newCosignatories">
         <p><b>Cosignatories to add</b></p>
 
-        <div [formGroupName]="i" *ngFor="let cosignatory of editMultisigForm.controls.newCosignatories.controls; let i = index">
+        <div [formGroupName]="i" *ngFor="let cosignatory of editMultisigForm.controls.newCosignatories['controls']; let i = index">
           <label>Cosignatory's Public Key</label>
           <input  class="form-control" type="text" formControlName="publicKey">
         </div>
@@ -63,7 +63,7 @@
       <div formArrayName="deletedCosignatories" class="gap-xs">
         <p><b>Cosignatories to remove</b></p>
 
-        <div [formGroupName]="i" *ngFor="let cosignatory of editMultisigForm.controls.deletedCosignatories.controls; let i = index">
+        <div [formGroupName]="i" *ngFor="let cosignatory of editMultisigForm.controls.deletedCosignatories['controls']; let i = index">
           <label>Cosignatory's Public Key</label>
           <input  class="form-control" type="text" formControlName="publicKey">
         </div>

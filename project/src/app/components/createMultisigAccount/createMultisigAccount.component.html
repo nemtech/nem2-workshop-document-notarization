@@ -52,7 +52,7 @@
       <div formArrayName="newCosignatories">
         <b>Cosignatories to add</b>
         <div [formGroupName]="i"
-             *ngFor="let cosignatory of createMultisigForm.controls.newCosignatories.controls; let i = index">
+             *ngFor="let cosignatory of createMultisigForm.controls.newCosignatories['controls']; let i = index">
           <label>Cosignatory's Public Key</label>
           <input class="form-control" type="text" formControlName="publicKey">
         </div>
