@@ -38,36 +38,36 @@ Before starting the workshop, install the following packages:
 
 ### Lab 1 - Running Catapult and project files
 
-1\. [Introduction](https://nemtech.github.io/nem2-workshop-document-notarization/lessons/introduction/)
+1\. [Introduction](https://nemfoundation.github.io/nem2-workshop-document-notarization/lessons/introduction/)
 
-2\. [Private and private blockchains](https://nemtech.github.io/nem2-workshop-document-notarization/lessons/public-and-private-blockchain/)
+2\. [Private and private blockchains](https://nemfoundation.github.io/nem2-workshop-document-notarization/lessons/public-and-private-blockchain/)
 
-3\. [Prepare your workstation](https://nemtech.github.io/nem2-workshop-document-notarization/lessons/prepare-your-workstation/)
+3\. [Prepare your workstation](https://nemfoundation.github.io/nem2-workshop-document-notarization/lessons/prepare-your-workstation/)
 
 
 ### Lab 2 - Notarizing a document
 
-4\. [Your first notarization](https://nemtech.github.io/nem2-workshop-document-notarization/lessons/first-notarization/)
+4\. [Your first notarization](https://nemfoundation.github.io/nem2-workshop-document-notarization/lessons/first-notarization/)
 
-5\. [Content and ownership verification](https://nemtech.github.io/nem2-workshop-document-notarization/lessons/content-and-ownership-verification/)
+5\. [Content and ownership verification](https://nemfoundation.github.io/nem2-workshop-document-notarization/lessons/content-and-ownership-verification/)
 
-6\. [Confidential notarization](https://nemtech.github.io/nem2-workshop-document-notarization/lessons/confidential-notarization/)
+6\. [Confidential notarization](https://nemfoundation.github.io/nem2-workshop-document-notarization/lessons/confidential-notarization/)
 
 ### Lab 3 - Updating a notarization
 
-7\. [Choosing the transaction recipient](https://nemtech.github.io/nem2-workshop-document-notarization/lessons/recipient/)
+7\. [Choosing the transaction recipient](https://nemfoundation.github.io/nem2-workshop-document-notarization/lessons/recipient/)
 
-8\. [Enabling notarization updates](https://nemtech.github.io/nem2-workshop-document-notarization/lessons/notarization-updates/)
+8\. [Enabling notarization updates](https://nemfoundation.github.io/nem2-workshop-document-notarization/lessons/notarization-updates/)
 
 ### Lab 4 - Co-signed notarization
 
-9\. [Co-signed notarization](https://nemtech.github.io/nem2-workshop-document-notarization/lessons/co-signed-notarization/)
+9\. [Co-signed notarization](https://nemfoundation.github.io/nem2-workshop-document-notarization/lessons/co-signed-notarization/)
 
-10\.[Transfer notarization](https://nemtech.github.io/nem2-workshop-document-notarization/lessons/transfer-notarization/)
+10\.[Transfer notarization](https://nemfoundation.github.io/nem2-workshop-document-notarization/lessons/transfer-notarization/)
 
 
 ### Lab 5 - Future work
 
-11\. [Delegated notarization](https://nemtech.github.io/nem2-workshop-document-notarization/lessons/delegated-notarization/)
+11\. [Delegated notarization](https://nemfoundation.github.io/nem2-workshop-document-notarization/lessons/delegated-notarization/)
 
-12\. [Future work: Apostille library](https://nemtech.github.io/nem2-workshop-document-notarization/lessons/future-work/)
+12\. [Future work: Apostille library](https://nemfoundation.github.io/nem2-workshop-document-notarization/lessons/future-work/)
