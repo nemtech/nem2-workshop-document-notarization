@@ -1,9 +1,14 @@
+# DEPRECATION NOTICE
+
+The workshop is no longer maintained in this repository.
+Part of the contents might be moved to [Symbol Academy](https://blog.nem.io/nem-foundation-catapult-roadmap-and-vision/).
+To continue using the workshop or advance its development, please create a custom fork.
+
 # nem2-workshop-document-notarization
 
 <!-- * [English][self-github-pages]
      * [中文](https://nemtechchina.github.io/nem2-workshop-document-notarization/)
  -->
-
 In this workshop you are going to learn how to prove documents existed prior to certain point in time. This document could be any digital file you can imagine in which you have an interest to notarize 
 — for example a meaningful contract, a movie script or a patent.
 
